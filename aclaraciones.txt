@@ -1,0 +1,76 @@
+LAS LISTAS SE USAN CUANDO:
+
+# Necesito saber el orden de los hechos. Ej:
+juega(pablo,rasti).
+juega(pablo,bloeques).
+
+juega(pablo,[rasti,bloques]).  <--- acá se que primero juega con rasti
+
+#Necesito comparar la longitud de listas.
+
+
+
+EJEMPLO DE FORALL:
+
+terminoAnio(Alumno, Anio):-
+    alumno(Alumno),
+    anio(Anio),
+    forall(materia(Materia, Anio), (nota(Alumno,Materia,Nota), Nota>=6)).
+
+O
+
+terminoAnio(Alumno, Anio):-
+    alumno(Alumno),
+    anio(Anio),
+    forall(materia(Materia, Anio), aprobo(Alumno,Materia)).
+
+aprobo(Alumno,Materia):-
+    nota(Alumno,Materia,Nota),
+    Nota>=6.
+
+
+#
+%Un trago es copado si todos los bartenders que lo preparan cobran bien.
+
+copado(Trago):-
+    trago(Trago),
+    forall(prepara(Bartender, Trago),ganaBien(Bartender)).
+
+
+CODE SMELLS
+
+#La solucion no utiliza correctamente conceptos del paradigma.
+#La solucion comprometen el mantenimiento a futuro.
+#A la solucion le faltan abstraccines de mas alto nivel.
+
+
+
+FINDALL
+
+Es util para trabajar con totales, cantidad, promedios, sumatorias, etc.
+
+Casos para tener en cuenta
+
+#
+alguienPrepara(Trago):-   <--- ESTO NO ES UNA BUENA IMPLEMENTACION!!!
+    trago(Trago),
+    findall(Bartender, prepara(Bartender, Trago), Bartenders),
+    length(Bartender,CantidadBartenders),
+    CantidadBartenders > 0.
+
+MEJOR HACER ESTO
+alguienPrepara(Trago):-
+    distinct(Trago, prepara(_,Trago)).
+
+
+#
+nadiePrepara(Trago):-   <--- ESTO NO ES UNA BUENA IMPLEMENTACION!!!
+    trago(Trago),
+    findall(Bartender,prepara(Bartender, Trago), Bartenders),
+    length(Bartenders, 0).
+
+MEJOR HACER ESTO
+nadiePrepara(Trago):-
+    trago(Trago),
+    not(prepara(_,Trago).)
+
