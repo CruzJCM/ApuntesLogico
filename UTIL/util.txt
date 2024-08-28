@@ -1,0 +1,68 @@
+INVERSIBILIDAD:
+La inversibilidad es la capacidad de un predicado de funcionar en ambas direcciones, proporcionando flexibilidad y utilidad en consultas y generación de soluciones. Es un concepto central para escribir código en Prolog que sea general y reutilizable.
+
+En Prolog, la inversibilidad de un predicado se refiere a la capacidad del mismo para funcionar correctamente tanto cuando se le da entrada (consultas directas) como cuando se le pide que genere soluciones posibles (consultas inversas). Es decir, un predicado es inversible si puede ser utilizado para:
+
+Verificar si una condición es verdadera con valores específicos de entrada.
+Generar todas las combinaciones posibles de valores que satisfacen una condición dada.
+
+
+NOT:
+Es importante destacar que not/1 no implementa una negación lógica en el sentido clásico, sino que depende de la capacidad de Prolog para demostrar o fallar en probar la meta G. Esto puede llevar a resultados inesperados si G no está completamente definida o si depende de argumentos libres (variables sin instanciar).
+
+
+FINDALL:
+
+En Prolog, findall/3 y forall/2 son predicados que se utilizan para trabajar con listas de soluciones y verificar condiciones en todas las soluciones, respectivamente. Ambos son fundamentales para manipular y evaluar múltiples resultados de consultas en Prolog.
+
+findall/3
+findall/3 se utiliza para recolectar todas las soluciones posibles de una consulta y almacenarlas en una lista. Es muy útil cuando quieres generar todas las instancias que satisfacen un determinado predicado.
+
+forall/2
+forall/2 se utiliza para verificar que una condición se cumpla para todas las soluciones de una consulta. Es una forma de expresar un "para todos" (universal quantifier) en Prolog. Si la condición no se cumple para alguna solución, forall/2 falla.
+
+
+RECURSIVIDAD:
+En Prolog, la recursividad es una técnica fundamental utilizada para definir y resolver problemas mediante la definición de un predicado en términos de sí mismo. A diferencia de los lenguajes de programación imperativos, donde la recursividad se utiliza para repetir una serie de instrucciones, en Prolog se emplea para descomponer un problema en subproblemas más simples.
+
+Conceptos Clave de la Recursividad en Prolog
+Caso Base: Es el caso más simple del problema que puede ser resuelto directamente sin necesidad de recurrir a una llamada recursiva. Define la condición de parada para la recursión.
+
+Caso Recursivo: Es el caso en el que el predicado se llama a sí mismo con un argumento modificado, acercándose hacia el caso base.
+
+Cómo Funciona la Recursividad en Prolog
+Evaluación: Cuando Prolog evalúa una consulta, utiliza los casos definidos para encontrar una solución. En el caso de la recursividad, Prolog intenta resolver el problema llamando a sí mismo con argumentos diferentes.
+
+Descomposición: El problema original se descompone en subproblemas más simples mediante llamadas recursivas. Estas llamadas continuarán hasta que se alcance un caso base.
+
+Unificación y Retroceso: Durante la ejecución, Prolog utiliza la unificación para comparar los términos y determinar si las cláusulas se pueden aplicar. Si se encuentran soluciones parciales, Prolog puede realizar retroceso para explorar otras posibles soluciones.
+
+
+PREDICADOS:
+Predicados
+Definición: Un predicado en Prolog es una afirmación que puede ser verdadera o falsa. Se utiliza para expresar una relación entre términos o para describir hechos y reglas. Un predicado consta de un nombre y un conjunto de argumentos, y se puede pensar en él como una función que retorna un valor booleano (verdadero o falso).
+
+Hecho: Un predicado que establece una afirmación directa sobre el mundo.
+Regla: Un predicado que define una relación en términos de otros predicados.
+
+Relaciones
+Definición: Una relación en Prolog se refiere a la conexión entre términos que los predicados representan. Las relaciones pueden ser unidireccionales o bidireccionales y se definen en términos de cómo los argumentos de un predicado están conectados.
+
+Unificación: Es el proceso de hacer coincidir dos términos mediante la sustitución de variables. Es crucial para la resolución de consultas en Prolog. Durante la unificación, Prolog intenta encontrar una asignación de valores a las variables que haga que dos términos sean idénticos.
+
+
+Backtracking (Retroceso): Es la técnica mediante la cual Prolog explora diferentes posibles soluciones al intentar cumplir una consulta. Si una rama de la búsqueda no lleva a una solución, Prolog retrocede y prueba otra opción.
+
+
+Cómo Funcionan Juntos
+Definición de Predicados: Los predicados se definen para establecer hechos y reglas que representan relaciones en el dominio del problema.
+
+Resolución de Consultas: Cuando se realiza una consulta, Prolog utiliza los predicados definidos para intentar satisfacer la consulta. Utiliza unificación y retroceso para encontrar posibles soluciones.
+
+Construcción de Relaciones: Las relaciones entre términos se establecen a través de la definición de predicados y se exploran durante la resolución de consultas.
+
+Resumen
+Predicados: Definen hechos y reglas en Prolog y son la base para hacer consultas y establecer relaciones.
+Relaciones: Representan conexiones entre términos y se definen mediante predicados.
+Unificación y Retroceso: Son mecanismos clave para resolver consultas y explorar posibles soluciones en Prolog.
+La recursividad, la unificación y el retroceso permiten que Prolog maneje relaciones complejas y realice inferencias lógicas de manera eficiente.
